@@ -1,0 +1,64 @@
+Tout cette description concerne la partie network
+Ceci est mon interpretation et je la pense juste sauf au point ou il y a des %. Donc voyez si vous comprenez la même chose ou non
+Ci ce n'est pas assez claire veuillez le préciser ou modifier.
+
+/API
+	/Advertisement
+		Advertisement.java : Interface qui construit les fonctions de base d'un advertisement
+		ItemAdvertisementInterface.java : Interface qui hérite d'Advertisement qui a été modifié pour les Items.
+		PeerAdvertisementInterface.java : Interface qui hérite d'Advertisement, ne fais rien en particulier, il créer juste une distinction
+		UserAdvertisementInterface.java : Interface qui hérite d'Advertisement, ne fais rien en particulier, il créer juste une distinction
+	
+	/Annotation
+		ServiceName.java : Interface qui définit quel service peut être utilisé par un advertisement ( a preciser, pas assez claire)
+		MessageElement.java : Interface qui crée l'interieur d'un message
+		AdvertissementAttribute : Interface qui signale si l'attribut fait partie de l'advertisement
+	
+	/Service
+		Service.java : Interface qui créer les fonctions des services
+	
+	ItemRequestService.java : Interface qui hérite de service permettant l'envoie des requetes
+	ItemService.java : Interface qui hérite de service, ne fais rien en particulier
+	Messages.java : Interface qui permet la création de message
+	Node.java : Interface qui lance le serveur sur un peer
+	Peer.java : Interface qui gère le peer en entier
+	Search.java : Interface d'un élément qui hérite d'Advertisement, initialise un service et renvoie une bibliotheque d'une recherche
+	SearchListener.java : Interface d'un élément qui hérite d'Advertisement, envoie une notification des appels pour une recherche
+	ServiceListener.java : Interface qui signale qu'un message a été reçu
+
+
+/Factories
+	AdvertisementFactory.java : Class qui créer et renvoie des Advertisements de type distinct
+	PeerFactory.java : Class qui créer et initialise un peer (fonction de test compris)
+	ServiceFactory.java : Class qui créer et renvoie JxtaItemsSenderService
+
+
+/Implg
+	/advertisement
+		ItemAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente ItemAdvertisementInterface, instancie un advertisment de type Item
+		PeerAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente PeerAdvertisementInterface, instancie un advertisment de type Peer
+		UserAdvertisement.java :Class qui hérite d'AbstractAdvertisement et qui implemente UserAdvertisementInterface, instancie un advertisment de type User
+	
+	/jxta
+		AdvertisementBridge.java : Class qui hérite d'Advertisement, Créer un arbre sur un advertisement dans le format xml pour qu'il puisse être envoyer sur le réseau (probabilité que ce soit cela 70%)
+		AdvertisementInstaciator.java : Class qui implement Instanciator, construit et recoit les Advertisement automatiquement
+		jxtaAdvertisement.java : Class qui hérite d'Advertisement, gère, rempli et publis un advertisement sur/pour un peer. Le rajoute à l'arbre d'AdvertismentBridge.
+		jxtaItemService.java : Class qui hérite de jxtaService et implemente ItemService, Créer un jxtaService de type Item
+		jxtaItemSenderService.java : Class qui hérite de jxtaService et implemente ItemRequestService, Envoie des messages sur le réseau ( probabilite 85%)
+		jxtaNode.java : Class qui implémente Node, gère le serveur
+		jxtaPeer.java : Class qui implémente Peer, gère un peer
+		jxtaService.java : Class qui hérite Service, DiscoveryListener et PipeMsgListener, BASE PRINCIPALE DU FONCTIONNEMENT EN JXTA ET DU PROJET, trop long à expliquer mais il gère quasiment tout de loin et délègue les taches précises aux autres jxta, permet de créer un groupe de peer par défaut ou non.
+		jxtaSyncSearch.java : Class qui hérite d'un élément de type Advertisement et implément SearchListener et Search, initialise le service, ajoute les notifications à un array et recherche dans le service un élément (probabilité 50%).
+	
+	/messages
+		RequestItemMessage.java : Class qui hérite de MessagesImpl, Créer l'entête d'un message
+			
+	/resilient (je crois que pouvez allez vous recoucher si vous ne connaissez pas ce qu'il y a dedans)
+	
+	AbstractAdvertisement.java : Class qui implémente Advertisement, créer les fonctions communes pour les Advertisements
+	MessageGeneric.java : Class qui implémente Messages, Créer le format stantard des messages
+	MessageImpl : Lis le message ainsi que l'expéditeur(Probabilité 30%)
+ 
+/utils
+	IpChecker.java : Class qui retrouve l'adresse ip public et le retourne sous format ipv4
+	
