@@ -1,12 +1,11 @@
 
-public interface jxtaResilientPeerService extends Service{
+public interface jxtaResilientPeerService extends jxtaPeer{
 	
 	private ResilientPeerAdvertisment init;
-	public void create_IdUnique(Peer peer)
-	{
-		init.setKey(peer);		
-	}
 
-	public void 
+
+	private void create_IdUnique() {
+		 publicKey =  UUID.fromString(this.getUri().toString()).toString();
+	}
 	
 }

@@ -8,15 +8,16 @@ Ci ce n'est pas assez claire veuillez le préciser ou modifier.
 		ItemAdvertisementInterface.java : Interface qui hérite d'Advertisement qui a été modifié pour les Items.
 		PeerAdvertisementInterface.java : Interface qui hérite d'Advertisement, ne fais rien en particulier, il créer juste une distinction
 		UserAdvertisementInterface.java : Interface qui hérite d'Advertisement, ne fais rien en particulier, il créer juste une distinction
+		** ResilientPeerAdvertisementInterface (créer, seulement à déplacer)
 	
 	/Annotation
-		ServiceName.java : Interface qui définit quel service peut être utilisé par un advertisement ( a preciser, pas assez claire)
+		ServiceName.java : Interface qui définit quel service peut être utilisé par un advertisement (a preciser, pas assez claire)
 		MessageElement.java : Interface qui crée l'interieur d'un message
 		AdvertissementAttribute : Interface qui signale si l'attribut fait partie de l'advertisement
 	
 	/Service
-		Service.java : Interface qui créer les fonctions des services
-	
+		Service.java : Interface qui créer les fonctions des services	
+		
 	ItemRequestService.java : Interface qui hérite de service permettant l'envoie des requetes
 	ItemService.java : Interface qui hérite de service, ne fais rien en particulier
 	Messages.java : Interface qui permet la création de message
@@ -38,7 +39,7 @@ Ci ce n'est pas assez claire veuillez le préciser ou modifier.
 		ItemAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente ItemAdvertisementInterface, instancie un advertisment de type Item
 		PeerAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente PeerAdvertisementInterface, instancie un advertisment de type Peer
 		UserAdvertisement.java :Class qui hérite d'AbstractAdvertisement et qui implemente UserAdvertisementInterface, instancie un advertisment de type User
-	
+		
 	/jxta
 		AdvertisementBridge.java : Class qui hérite d'Advertisement, Créer un arbre sur un advertisement dans le format xml pour qu'il puisse être envoyer sur le réseau (probabilité que ce soit cela 70%)
 		AdvertisementInstaciator.java : Class qui implement Instanciator, construit et recoit les Advertisement automatiquement

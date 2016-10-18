@@ -5,15 +5,11 @@ import network.api.advertisement.PeerAdvertisementInterface;
 import network.api.annotation.AdvertisementAttribute;
 import network.impl.AbstractAdvertisement;
 
-public class ResilientPeerAdvertisement extends PeerAdvertisement implements UserAdvertisementInterface{
+public class ResilientPeerAdvertisement extends PeerAdvertisement implements ResilientPeerAdvertisementInterface{
 	
 	@AdvertisementAttribute(indexed = true)
 	private String publicKey;
 
-	public void setKey(Peer peer) {
-		 publicKey =  UUID.fromString(peer.getUri().toString()).toString();
-	}
-	
 	@Override
 	public String getKey() {
 		return  null;
@@ -21,6 +17,6 @@ public class ResilientPeerAdvertisement extends PeerAdvertisement implements Use
 
 	@Override
 	public String getAdvertisementType(Peer peer) {
-			return null;
+		return null;
 	}
 }
