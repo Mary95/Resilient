@@ -1,16 +1,15 @@
 package network.impl.resilient;
 
 import java.util.UUID;
-import network.api.advertisement.PeerAdvertisementInterface;
 import network.api.annotation.AdvertisementAttribute;
 import network.impl.AbstractAdvertisement;
+import network.api.advertisement.ResilientAdvertisementInterface;
 
 public class ResilientAdvertisement extends AbstractAdvertisement implements ResilientAdvertisementInterface{
 	
 	@AdvertisementAttribute(indexed = true)
 	private String publicKey;
 
-	@Override
 	public String getKey() {
 		
 		return  publicKey;
@@ -27,7 +26,7 @@ public class ResilientAdvertisement extends AbstractAdvertisement implements Res
 	}
 	
 	@Override
-	public String getAdvertisementType(Peer peer) {
+	public String getAdvertisementType() {
 		return null;
 	}
 }
