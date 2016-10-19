@@ -1,4 +1,4 @@
-package network.impl.advertisement;
+package network.impl.resilient;
 
 import java.util.UUID;
 import network.api.advertisement.PeerAdvertisementInterface;
@@ -21,6 +21,11 @@ public class ResilientAdvertisement extends AbstractAdvertisement implements Res
 		publicKey=newKey;
 	}
 
+	public String getName()
+	{
+		return "ResilientSXP";
+	}
+	
 	@Override
 	public String getAdvertisementType(Peer peer) {
 		return null;
