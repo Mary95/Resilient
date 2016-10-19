@@ -16,7 +16,7 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Item>{
 	 * @param peer Peer instance, started
 	 * @param who who own this instance
 	 */
-	public NetworkResilienceManagerDecorator(Manager<Item> em, Peer peer, String who) {
+	public ResilienceItemManagerDecorator(Manager<Item> em, Peer peer, String who) {
 		super(em);
 		this.peer = peer;
 		this.who = who;
