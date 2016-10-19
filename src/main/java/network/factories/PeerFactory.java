@@ -36,7 +36,9 @@ public class PeerFactory {
 	public static Peer createDefaultAndStartPeer() {
 		Peer p = createAndStartPeer("jxta", ".peercache", 9578);
 		Service itemService = new JxtaItemService();
+		Service resilientService = new JxtaResilientService();
 		itemService.initAndStart(p);
+		resilientService.initAndStart(p);
 		return p;
 	}
 	

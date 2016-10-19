@@ -34,7 +34,7 @@ Ci ce n'est pas assez claire veuillez le préciser ou modifier.
 	ServiceFactory.java : Class qui créer et renvoie JxtaItemsSenderService
 
 
-/Implg
+/Impl
 	/advertisement
 		ItemAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente ItemAdvertisementInterface, instancie un advertisment de type Item
 		PeerAdvertisement.java : Class qui hérite d'AbstractAdvertisement et qui implemente PeerAdvertisementInterface, instancie un advertisment de type Peer
@@ -63,3 +63,4 @@ Ci ce n'est pas assez claire veuillez le préciser ou modifier.
 /utils
 	IpChecker.java : Class qui retrouve l'adresse ip public et le retourne sous format ipv4
 	
+git
