@@ -5,7 +5,7 @@ public class jxtaResilientService extends jxtaService implements ResilientServic
 	public static final String NAME = "ResilientSXP";
 
 	private String create_IdUnique(String key) {
-		 return UUID.fromString(key).toString());
+		 return UUID.fromString(key).toString();
 		 
 	}
 	public void initAndStart(Peer peer)
