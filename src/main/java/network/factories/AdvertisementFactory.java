@@ -1,8 +1,9 @@
 package network.factories;
-
 import network.api.advertisement.ItemAdvertisementInterface;
 import network.api.advertisement.PeerAdvertisementInterface;
 import network.api.advertisement.UserAdvertisementInterface;
+import network.impl.resilientResilientAdvertissementInterface;
+import network.impl.resilientResilientAdvertissement;
 import network.impl.advertisement.ItemAdvertisement;
 import network.impl.advertisement.PeerAdvertisement;
 import network.impl.advertisement.UserAdvertisement;
@@ -20,8 +21,8 @@ public class AdvertisementFactory {
 		return new PeerAdvertisement();
 	}
 	
-	public static ResilientSxpAdvertisementInterface createResilientSxpAdvertisement()
+	public static ResilientAdvertisementInterface createResilientAdvertisement()
 	{
-		return new ResilientSxpAdvertisement();
+		return new ResilientAdvertisement();
 	}
 }
