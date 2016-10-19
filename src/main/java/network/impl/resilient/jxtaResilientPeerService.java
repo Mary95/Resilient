@@ -1,7 +1,7 @@
 
 public interface jxtaResilientPeerService extends jxtaPeer{
 	
-	private ResilientPeerAdvertisment init;
+	private ResilientPeerAdvertisement init;
 
 
 	private void create_IdUnique() {
