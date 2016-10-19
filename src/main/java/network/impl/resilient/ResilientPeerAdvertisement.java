@@ -5,7 +5,7 @@ import network.api.advertisement.PeerAdvertisementInterface;
 import network.api.annotation.AdvertisementAttribute;
 import network.impl.AbstractAdvertisement;
 
-public class ResilientPeerAdvertisement extends PeerAdvertisement implements ResilientPeerAdvertisementInterface{
+public class ResilientPeerAdvertisement extends AbstractAdvertisement implements ResilientPeerAdvertisementInterface{
 	
 	@AdvertisementAttribute(indexed = true)
 	private String publicKey;
