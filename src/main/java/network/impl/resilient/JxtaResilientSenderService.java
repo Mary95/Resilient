@@ -1,7 +1,7 @@
 package network.impl.resilient;
 
 import java.util.Collection;
-
+import network.impl.jxta.JxtaService;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import controller.tools.JsonTools;
