@@ -16,5 +16,13 @@ import network.impl.messages.RequestItemMessage;
 public class JxtaResilientSenderService extends JxtaService implements ResilientRequestService
 {
 	public static final String NAME="ResilientSXPSender";
-	
+
+	public void sendRequest(String title, String who, String ...uris)
+	{
+		RequestItemMessage m = new RequestItemMessage();
+		m.setTitle(title);
+		m.setWho(who);
+		m.setSource(this.peerUri);
+		this.sendMessages(m, peerURIs);
+	}
 }
