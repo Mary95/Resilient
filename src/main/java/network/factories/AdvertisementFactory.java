@@ -19,4 +19,9 @@ public class AdvertisementFactory {
 	public static PeerAdvertisementInterface createPeerAdvertisement() {
 		return new PeerAdvertisement();
 	}
+	
+	public static ResilientSxpAdvertisementInterface createResilientSxpAdvertisement()
+	{
+		return new ResilientSxpAdvertisement();
+	}
 }

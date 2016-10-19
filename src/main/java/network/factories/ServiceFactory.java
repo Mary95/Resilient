@@ -7,4 +7,9 @@ public class ServiceFactory {
 	public ItemRequestService createItemRequestService() {
 		return new JxtaItemsSenderService();
 	}
+	
+	public ResilientSxpService createResilientSxpService()
+	{
+		return new JxtaResilientSxpService();
+	}
 }
