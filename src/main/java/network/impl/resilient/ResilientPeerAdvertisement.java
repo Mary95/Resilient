@@ -12,7 +12,13 @@ public class ResilientPeerAdvertisement extends PeerAdvertisement implements Res
 
 	@Override
 	public String getKey() {
-		return  null;
+		
+		return  publicKey;
+	}
+	
+	public void setKey(String newKey) {
+		
+		publicKey=newKey;
 	}
 
 	@Override
