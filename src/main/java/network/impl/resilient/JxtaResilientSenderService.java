@@ -12,14 +12,12 @@ import network.api.ItemRequestService;
 import network.api.Messages;
 import network.impl.MessagesGeneric;
 import network.impl.messages.RequestItemMessage;
-import network.impl.jxta.JxtaService;
-
 
 public class JxtaResilientSenderService extends JxtaService implements ResilientRequestService
 {
 	public static final String NAME="ResilientSXPSender";
 
-	public void sendRequest(String title, String who, String ...peerURIs)
+	public void sendRequest(String title, String who, String ...uris)
 	{
 		RequestItemMessage m = new RequestItemMessage();
 		m.setTitle(title);
