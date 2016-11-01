@@ -62,7 +62,7 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
 
 		}, who == null ? "test":who);
 
-		items.search(attribute, value, new SearchListener<ResilientAdvertisementInterface>() {
+		resilient.search(attribute, value, new SearchListener<ResilientAdvertisementInterface>() {
 			@Override
 			public void notify(Collection<ResilientAdvertisementInterface> result) {
 				ArrayList<String> uids = new ArrayList<>();
@@ -85,7 +85,7 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
 		iadv.publish(peer);*/
 	}
 
-	@Override
+	
 	public void begin(Resilient entity) {
 		super.begin();
 		ResilientAdvertisementInterface iadv = AdvertisementFactory.createResilientAdvertisement();
