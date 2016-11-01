@@ -15,9 +15,10 @@ import network.api.Peer;
 import network.api.SearchListener;
 import network.api.ServiceListener;
 import network.api.service.Service;
-import network.factories.AdvertisementFactory;
-import network.impl.resilient.Resilient;
 import network.api.advertisement.ResilientAdvertisementInterface;
+import network.factories.AdvertisementFactory;
+import network.impl.resilient.ResilientService;
+import network.impl.resilient.Resilient;
 import network.impl.resilient.ResilientRequestService;
 
 public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
@@ -49,19 +50,19 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
 
 			@Override
 			public void notify(Messages messages) {
-				JsonTools<ArrayList<Resilient> json = new JsonTools<>(new TypeReference<ArrayList<Resilient>(){});
+				JsonTools<ArrayList<Resilient>> json = new JsonTools<>(new TypeReference<ArrayList<Resilient>>(){});
 				ArrayList<Resilient> resilient= json.toEntity(messages.getMessage("ResilientSxp"));
 				System.out.println("Discussion crée !");
 				System.out.println(messages.getMessage("ResilientSxp"));
-				for(Peer i : peers) {
-					System.out.println(i.getUri());
+				for(Resilient i : resilient) {
+					System.out.println(i.getId());
 				}
 				l.notify(json.toEntity(messages.getMessage("ResilientSxp")));
 			}
 
 		}, who == null ? "test":who);
 
-		items.search(attribute, value, new SearchListener<ItemAdvertisementInterface>() {
+		items.search(attribute, value, new SearchListener<ResilientAdvertisementInterface>() {
 			@Override
 			public void notify(Collection<ResilientAdvertisementInterface> result) {
 				ArrayList<String> uids = new ArrayList<>();
@@ -88,7 +89,7 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
 	public void begin(Resilient entity) {
 		super.begin();
 		ResilientAdvertisementInterface iadv = AdvertisementFactory.createResilientAdvertisement();
-		iadv.setTitle(entity.getTitle());
+		iadv.setKey(entity.getId());
 		iadv.publish(peer);
 	}
 

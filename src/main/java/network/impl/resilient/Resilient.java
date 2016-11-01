@@ -29,11 +29,6 @@ public class Resilient {
     @GeneratedValue(generator="uuid")
 	private String id;
 
-	@XmlElement(name="title")
-	@NotNull
-	@Size(min = 3, max = 255)
-	private String title;
-
 	@XmlElement(name="createdAt")
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,27 +43,16 @@ public class Resilient {
 	@JsonFormat(shape=JsonFormat.Shape.STRING)
 	private BigInteger pbkey;
 
-	@XmlElement(name="username")
-	@NotNull
-	@Size(min = 2, max = 255)
-	private String username;
-
-	@XmlElement(name="username")
-	@NotNull
-	private String userid;
 
 
 	public String getId() {
 		return id;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setId(String uuid) {
+		 id = uuid;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public void setCreatedAt(Date date) {
 		createdAt = date;
@@ -86,19 +70,5 @@ public class Resilient {
 		this.pbkey = pbkey;
 	}
 
-	public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
 }
