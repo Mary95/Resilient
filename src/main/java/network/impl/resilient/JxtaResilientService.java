@@ -13,11 +13,13 @@ public class JxtaResilientService extends JxtaService implements ResilientServic
 		super();
 	}
 
-
+	/* Permet de créer un id dont la taille est acceptée par le programme via un id unique */
 	private String create_IdUnique(String key) {
 		 return UUID.fromString(key).toString();
 		 
 	}
+	
+	/* met à jour le service afin de modifier la valeur du peer */
 	public void initAndStart(Peer peer)
 	{
 		super.initAndStart(peer);
