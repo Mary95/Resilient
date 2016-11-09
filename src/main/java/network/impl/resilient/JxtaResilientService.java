@@ -24,6 +24,7 @@ public class JxtaResilientService extends JxtaService implements ResilientServic
 	{
 		super.initAndStart(peer);
 		peerUri=create_IdUnique(peerUri);
+		System.out.println(peerUti);
 	}
 	
 }
