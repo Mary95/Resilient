@@ -1,30 +1,29 @@
-package network.impl.resilient; 
+package network.impl.jxta;
 
 import java.util.*;
 import network.impl.jxta.JxtaService;
 import network.api.Peer;
+import network.impl.resilient.ResilientService;
+import network.impl.resilient.ResilientAdvertisement;
 
 public class JxtaResilientService extends JxtaService implements ResilientService{
-	
+
 	private ResilientAdvertisement init;
-	public static final String NAME = "ResilientSXP";
-	
+	public static final String NAME = "resilient";
+
 	public JxtaResilientService(){
-		super();
+		this.name = NAME;
 	}
 
-	/* Permet de créer un id dont la taille est acceptée par le programme via un id unique */
 	private String create_IdUnique(String key) {
 		 return UUID.fromString(key).toString();
-		 
+
 	}
-	
-	/* met à jour le service afin de modifier la valeur du peer */
+
 	public void initAndStart(Peer peer)
 	{
 		super.initAndStart(peer);
-		peerUri=create_IdUnique(peerUri);
-		System.out.println(peerUti);
+		peerUri = create_IdUnique(peerUri);
 	}
-	
+
 }

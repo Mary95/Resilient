@@ -23,8 +23,8 @@ import network.impl.resilient.ResilientRequestService;
 
 public class ResilienceItemManagerDecorator extends ManagerDecorator<Item>{
 
-	private Peer peer;
 
+	private Peer peer;	
 	/**
 	 *
 	 * @param em Item async manager

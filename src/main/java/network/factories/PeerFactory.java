@@ -13,7 +13,7 @@ import network.impl.jxta.AdvertisementInstaciator;
 import network.impl.jxta.JxtaItemService;
 import network.impl.jxta.JxtaItemsSenderService;
 import network.impl.jxta.JxtaPeer;
-import network.impl.resilient.JxtaResilientService;
+import network.impl.jxta.JxtaResilientService;
 
 /**
  * {@link Peer} factory
@@ -21,7 +21,7 @@ import network.impl.resilient.JxtaResilientService;
  *
  */
 public class PeerFactory {
-	
+
 	/**
 	 * create the default implementation of {@link Peer}
 	 * @return a {@link Peer}
@@ -29,7 +29,7 @@ public class PeerFactory {
 	public static Peer createDefaultPeer() {
 		return createJxtaPeer();
 	}
-	
+
 	/**
 	 * Create a the default implementation of {@link Peer} and start it
 	 * @return an initialized and started {@link Peer}
@@ -42,7 +42,7 @@ public class PeerFactory {
 		resilientService.initAndStart(p);
 		return p;
 	}
-	
+
 	public static Peer createDefaultAndStartPeerForTest() {
 		Random r = new Random();
 		String cache = ".peer" + r.nextInt(10000);
@@ -50,15 +50,19 @@ public class PeerFactory {
 		int port = 9800;
 		System.out.println("jxta will run on port " + port);
 		Peer p = createAndStartPeer("jxta", cache, port);
-		
+
 		Service itemService = new JxtaItemService();
 		itemService.initAndStart(p);
-		
+
 		Service itemsSender = new JxtaItemsSenderService();
 		itemsSender.initAndStart(p);
+
+		Service resilientService = new JxtaResilientService();
+		resilientService.initAndStart(p);
+
 		return p;
 	}
-	
+
 	/**
 	 * Create a Jxta implementation of {@link Peer}
 	 * @return a {@link JxtaPeer}
@@ -69,7 +73,7 @@ public class PeerFactory {
 		AdvertisementFactory.registerAdvertisementInstance(i.getAdvType(), new AdvertisementInstaciator(i));
 		return new JxtaPeer();
 	}
-	
+
 	/**
 	 * Create, initialize, and start a {@link JxtaPeer}
 	 * @return an initialized and started {@link Peer}

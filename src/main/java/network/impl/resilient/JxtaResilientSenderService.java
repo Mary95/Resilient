@@ -17,6 +17,7 @@ public class JxtaResilientSenderService extends JxtaService implements Resilient
 {
 	public static final String NAME="ResilientSXPSender";
 
+	/* permet d'envoyer des requêtes de type resilient aux peerURIs */
 	public void sendRequest(String title, String who, String ...peerURIs)
 	{
 		RequestItemMessage m = new RequestItemMessage();

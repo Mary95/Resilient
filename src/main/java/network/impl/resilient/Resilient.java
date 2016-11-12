@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+
+/* Créer un objet de type Resilient */
 @XmlRootElement
 @Entity
 public class Resilient {
@@ -44,7 +46,7 @@ public class Resilient {
 	private BigInteger pbkey;
 
 
-
+	
 	public String getId() {
 		return id;
 	}
