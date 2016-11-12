@@ -1,8 +1,8 @@
+
 package controller.managers;
 
-
-import java.util.ArrayList;
-import java.util.Collection;
+import model.entity.Item;
+import network.api.Peer;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -21,10 +21,9 @@ import network.impl.resilient.ResilientService;
 import network.impl.resilient.Resilient;
 import network.impl.resilient.ResilientRequestService;
 
-public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
+public class ResilienceItemManagerDecorator extends ManagerDecorator<Item>{
 
 	private Peer peer;
-	private String who;
 
 	/**
 	 *
@@ -32,60 +31,19 @@ public class ResilienceItemManagerDecorator extends ManagerDecorator<Resilient>{
 	 * @param peer Peer instance, started
 	 * @param who who own this instance
 	 */
-	public ResilienceItemManagerDecorator(Manager<Resilient> em, Peer peer, String who) {
+	public ResilienceItemManagerDecorator(Manager<Item> em, Peer peer) {
 		super(em);
 		this.peer = peer;
-		this.who = who;
 	}
 
 
-	@Override
-	public void findAllByAttribute(String attribute, final String value, final ManagerListener<Resilient> l) {
-		super.findAllByAttribute(attribute, value, l);
-		final ResilientRequestService resilientSender = (ResilientRequestService) peer.getService(ResilientRequestService.NAME);
-		Service resilient = peer.getService(ResilientService.NAME);
-
-		resilientSender.removeListener(who);
-		resilientSender.addListener(new ServiceListener() {
-
-			@Override
-			public void notify(Messages messages) {
-				JsonTools<ArrayList<Resilient>> json = new JsonTools<>(new TypeReference<ArrayList<Resilient>>(){});
-				ArrayList<Resilient> resilient= json.toEntity(messages.getMessage("ResilientSxp"));
-				System.out.println("Discussion crée !");
-				System.out.println(messages.getMessage("ResilientSxp"));
-				for(Resilient i : resilient) {
-					System.out.println(i.getId());
-				}
-				l.notify(json.toEntity(messages.getMessage("ResilientSxp")));
-			}
-
-		}, who == null ? "test":who);
-
-		resilient.search(attribute, value, new SearchListener<ResilientAdvertisementInterface>() {
-			@Override
-			public void notify(Collection<ResilientAdvertisementInterface> result) {
-				ArrayList<String> uids = new ArrayList<>();
-				for(ResilientAdvertisementInterface i: result) {
-					uids.add(i.getSourceURI());
-				}
-				resilientSender.sendRequest(value, who == null ? "test":who, uids.toArray(new String[1]));
-			}
-
-		});
-	}
-
-
-
-	@Override
-	public void persist(Resilient entity) {
+	public void persist(Item entity) {
 		super.persist(entity);
-	/*	ResilientAdvertisementInterface iadv = AdvertisementFactory.createResilientAdvertisement();
-		iadv.setTitle(entity.getTitle());
-		iadv.publish(peer);*/
+		ResilientAdvertisementInterface iadv = AdvertisementFactory.createResilientAdvertisement();
+		iadv.publish(peer);
 	}
 
-	
+
 	public void begin(Resilient entity) {
 		super.begin();
 		ResilientAdvertisementInterface iadv = AdvertisementFactory.createResilientAdvertisement();
