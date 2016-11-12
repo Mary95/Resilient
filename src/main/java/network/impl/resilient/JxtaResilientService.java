@@ -23,8 +23,8 @@ public class JxtaResilientService extends JxtaService implements ResilientServic
 	public void initAndStart(Peer peer)
 	{
 		super.initAndStart(peer);
-		peerUri=create_IdUnique(peerUri);
-		System.out.println(peerUti);
+		peerUri=create_IdUnique(this.peerUri);
+		System.out.println(peerUri);
 	}
 	
 }
