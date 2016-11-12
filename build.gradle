@@ -4,8 +4,8 @@ apply plugin: 'maven'
 apply plugin: 'application'
 
 
-mainClassName = "controller.Application"
-//mainClassName = "crypt.CryptCommander"
+//mainClassName = "controller.Application"
+mainClassName = "crypt.CryptCommander"
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 repositories {
