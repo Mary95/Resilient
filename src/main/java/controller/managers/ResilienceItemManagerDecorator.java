@@ -15,16 +15,16 @@ import network.api.Peer;
 import network.api.SearchListener;
 import network.api.ServiceListener;
 import network.api.service.Service;
-import network.api.advertisement.ResilientAdvertisementInterface;
+import resilient.api.ResilientAdvertisementInterface;
 import network.factories.AdvertisementFactory;
-import network.impl.resilient.ResilientService;
-import network.impl.resilient.Resilient;
-import network.impl.resilient.ResilientRequestService;
+import resilient.api.ResilientService;
+import model.entity.Resilient;
+import resilient.impl.ResilientRequestService;
 
 public class ResilienceItemManagerDecorator extends ManagerDecorator<Item>{
 
 
-	private Peer peer;	
+	private Peer peer;
 	/**
 	 *
 	 * @param em Item async manager

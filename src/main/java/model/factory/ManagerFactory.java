@@ -7,7 +7,7 @@ import model.entity.Item;
 import model.manager.ManagerAdapter;
 import model.syncManager.ItemSyncManagerImpl;
 import network.api.Peer;
-import network.impl.resilient.ResilientSyncManager;
+import model.syncManager.ResilientSyncManager;
 
 public class ManagerFactory {
 	public static Manager<Item> createNetworkResilianceItemManager(Peer peer, String who) {

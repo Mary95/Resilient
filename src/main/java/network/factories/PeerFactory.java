@@ -13,7 +13,7 @@ import network.impl.jxta.AdvertisementInstaciator;
 import network.impl.jxta.JxtaItemService;
 import network.impl.jxta.JxtaItemsSenderService;
 import network.impl.jxta.JxtaPeer;
-import network.impl.jxta.JxtaResilientService;
+import resilient.impl.JxtaResilientService;
 
 /**
  * {@link Peer} factory
