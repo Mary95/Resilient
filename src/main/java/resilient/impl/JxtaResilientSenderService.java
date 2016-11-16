@@ -12,6 +12,9 @@ import network.api.ItemRequestService;
 import network.api.Messages;
 import network.impl.MessagesGeneric;
 import network.impl.messages.RequestItemMessage;
+import network.impl.jxta.JxtaService;
+import resilient.api.ResilientRequestService;
+
 
 public class JxtaResilientSenderService extends JxtaService implements ResilientRequestService
 {
