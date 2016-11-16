@@ -1,0 +1,17 @@
+resilient : Créer une entité rensilient dans le programme
+
+resilientadvertisement : Créer les alertes utilisés par la résilience
+
+resilientrequestservice : définit les méthodes pour envoyer des messages 
+
+resilientservice : définit les méthodes pour nommer les objets
+
+resilientadvertisementinterface :  Définit des méthodes d'advertisement utilisées par le module resilient 
+
+jxtaResilientSenderService : Permet d'envoyer un message à plusieurs peer avec l'adresse du peer actuel
+
+jxtResilientService : Créer un objet Service de type resilient
+
+jxtaSearchresilient :
+ 
+resilientsyncmanager : Définit les méthodes de syncmanager avec le type resilient comme base
