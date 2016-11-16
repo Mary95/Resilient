@@ -19,7 +19,7 @@ import resilient.api.ResilientAdvertisementInterface;
 import network.factories.AdvertisementFactory;
 import resilient.api.ResilientService;
 import model.entity.Resilient;
-import resilient.impl.ResilientRequestService;
+import resilient.api.ResilientRequestService;
 
 public class ResilienceItemManagerDecorator extends ManagerDecorator<Item>{
 
