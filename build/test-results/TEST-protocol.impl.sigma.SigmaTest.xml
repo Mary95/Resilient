@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="protocol.impl.sigma.SigmaTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-11-23T13:48:59" hostname="alexis-G551JW" time="0.114">
+  <properties/>
+  <testcase name="test" classname="protocol.impl.sigma.SigmaTest" time="0.114"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
