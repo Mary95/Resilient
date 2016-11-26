@@ -12,6 +12,7 @@ import model.api.ManagerListener;
 import model.entity.Item;
 import network.api.ItemRequestService;
 import network.api.ItemService;
+import resilient.api.ResilientService;
 import network.api.Messages;
 import network.api.Peer;
 import network.api.SearchListener;
@@ -24,9 +25,9 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 
 	private Peer peer;
 	private String who;
-	
+
 	/**
-	 * 
+	 *
 	 * @param em Item async manager
 	 * @param peer Peer instance, started
 	 * @param who who own this instance
@@ -43,18 +44,18 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 		//TODO
 		/*final ItemRequestService itemSender = (ItemRequestService) Application.getInstance().getPeer().getService(JxtaItemsSenderService.NAME);
 		Service items = Application.getInstance().getPeer().getService(JxtaItemService.NAME);
-		
+
 		itemSender.addListener(new ServiceListener() {
-			
+
 			@Override
 			public void notify(Messages messages) {
 				JsonTools<ArrayList<Item>> json = new JsonTools<>();
 				json.initialize(ArrayList.class);
 				l.notify(json.toEntity(messages.getMessage("items")));
 			}
-			
+
 		}, who == null ? "test":who);
-		
+
 		items.search("id", id, new SearchListener<ItemAdvertisement>() {
 			@Override
 			public void notify(Collection<ItemAdvertisement> result) {
@@ -64,9 +65,9 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 				}
 				itemSender.sendRequest(id, who == null ? "test":who, uids.toArray(new String[1]));
 			}
-			
+
 		});*/
-		
+
 	}
 
 	@Override
@@ -74,10 +75,10 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 		super.findAllByAttribute(attribute, value, l);
 		final ItemRequestService itemSender = (ItemRequestService) peer.getService(ItemRequestService.NAME);
 		Service items = peer.getService(ItemService.NAME);
-		
+
 		itemSender.removeListener(who);
 		itemSender.addListener(new ServiceListener() {
-			
+
 			@Override
 			public void notify(Messages messages) {
 				JsonTools<ArrayList<Item>> json = new JsonTools<>(new TypeReference<ArrayList<Item>>(){});
@@ -89,9 +90,9 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 				}
 				l.notify(json.toEntity(messages.getMessage("items")));
 			}
-			
+
 		}, who == null ? "test":who);
-		
+
 		items.search(attribute, value, new SearchListener<ItemAdvertisementInterface>() {
 			@Override
 			public void notify(Collection<ItemAdvertisementInterface> result) {
@@ -101,7 +102,7 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 				}
 				itemSender.sendRequest(value, who == null ? "test":who, uids.toArray(new String[1]));
 			}
-			
+
 		});
 	}
 
@@ -128,5 +129,5 @@ public class NetworkItemManagerDecorator extends ManagerDecorator<Item>{
 	public void end() {
 		super.end();
 	}
-	
+
 }

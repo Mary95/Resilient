@@ -24,6 +24,7 @@ import network.api.ServiceListener;
 import network.api.service.Service;
 import network.impl.advertisement.ItemAdvertisement;
 import network.impl.jxta.JxtaItemService;
+import resilient.impl.jxta.JxtaResilientService;
 import network.impl.jxta.JxtaItemsSenderService;
 import rest.api.Authentifier;
 import rest.api.ServletPath;
@@ -38,16 +39,16 @@ public class Search{
 			@QueryParam("title") final String title,
 			@HeaderParam(Authentifier.PARAM_NAME) final String token) {
 		final ChunkedOutput<String> output = new ChunkedOutput<String>(String.class);
-		
+
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				
+
 				final ItemRequestService itemSender = (ItemRequestService) Application.getInstance().getPeer().getService(JxtaItemsSenderService.NAME);
 				Service items = Application.getInstance().getPeer().getService(JxtaItemService.NAME);
 				itemSender.addListener(new ServiceListener() {
-					
+
 					@Override
 					public void notify(Messages messages) {
 						try {
@@ -62,9 +63,9 @@ public class Search{
 							}
 						}
 					}
-					
+
 				}, token == null ? "test":token);
-				
+
 				items.search("title", title, new SearchListener<ItemAdvertisement>() {
 					@Override
 					public void notify(Collection<ItemAdvertisement> result) {
@@ -74,7 +75,7 @@ public class Search{
 						}
 						itemSender.sendRequest(title, token == null ? "test":token, uids.toArray(new String[1]));
 					}
-					
+
 				});
 				try {
 					Thread.sleep(3000);
@@ -87,30 +88,30 @@ public class Search{
 						e1.printStackTrace();
 					}
 				} catch (InterruptedException e) {
-					
+
 				}
 			}
-			
+
 		}).start();
-		
+
 		return output;
 	}
-	
+
 	@GET
 	@Path("/simple")
 	public ChunkedOutput<String> chunckedSearchByTitle2(
 			@QueryParam("title") final String title,
 			@HeaderParam(Authentifier.PARAM_NAME) final String token) {
 		final ChunkedOutput<String> output = new ChunkedOutput<String>(String.class);
-		
+
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				Manager<Item> em = 
+				Manager<Item> em =
 						ManagerFactory.createNetworkResilianceItemManager(Application.getInstance().getPeer(), token);
 				em.findAllByAttribute("title", title, new ManagerListener<Item>() {
-					
+
 					@Override
 					public void notify(Collection<Item> results) {
 						JsonTools<Collection<Item>> json = new JsonTools<>(new TypeReference<Collection<Item>>(){});
@@ -118,7 +119,7 @@ public class Search{
 							if(!results.isEmpty()) {
 								output.write(json.toJson(results));
 							}
-							
+
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -138,9 +139,9 @@ public class Search{
 					}
 				}
 			}
-			
+
 		}).start();
-		
+
 		return output;
 	}
 
