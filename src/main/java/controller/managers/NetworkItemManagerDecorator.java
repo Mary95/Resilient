@@ -12,7 +12,7 @@ import model.api.ManagerListener;
 import model.entity.Item;
 import network.api.ItemRequestService;
 import network.api.ItemService;
-import resilient.api.ResilientService;
+import network.api.ResilientService;
 import network.api.Messages;
 import network.api.Peer;
 import network.api.SearchListener;

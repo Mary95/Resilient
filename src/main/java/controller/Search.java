@@ -24,7 +24,7 @@ import network.api.ServiceListener;
 import network.api.service.Service;
 import network.impl.advertisement.ItemAdvertisement;
 import network.impl.jxta.JxtaItemService;
-import resilient.impl.jxta.JxtaResilientService;
+import network.impl.jxta.JxtaResilientService;
 import network.impl.jxta.JxtaItemsSenderService;
 import rest.api.Authentifier;
 import rest.api.ServletPath;
